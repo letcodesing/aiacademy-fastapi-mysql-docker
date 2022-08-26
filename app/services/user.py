@@ -5,6 +5,5 @@ class UserService(object):
         pass
 
     def login(self,id,password):
-        
-        logi = User(id,password)
-        print(f'아이디{logi.pd()},비번{logi.sl()}')
+        user = User(id,password)
+        print(f'아이디{id},비번{password}')

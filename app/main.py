@@ -1,22 +1,23 @@
 import os
 import sys
 
-from torch import Use
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 basedir = os.path.dirname(os.path.abspath(__file__))
 
 from app.services.calculator import CalculatorService
 from app.services.user import UserService
+from app.services.classlistservice import ClasslistService
 def print_menu():
     print('0. 전체프로그램 종료')
     print('1. 계산기')
     print('2. 로그인')
+    print('3. 점수')
 
     menu = input('메뉴')
     return menu
 
 def main():
-    print_menu()
+    
     while 1:
         menu = print_menu()
 
@@ -32,10 +33,19 @@ def main():
 
         elif menu == '2':
             loging = UserService()
-            dd = str(input('아이디'))
-            aa = str(input('비번'))
-            loging.login(dd,aa)
+            id = str(input('아이디'))
+            password = str(input('비번'))
+            loging.login(id,password)
             
+        elif menu =='3':
+            list = ClasslistService()
+            z = str(input('이름'))
+            x = int(input('수학'))
+            c = int(input('영어'))
+            v = int(input('과학'))
+            print(f'{z}의 등급은')
+            list.listService(x,c,v)
+
 if __name__ =='__main__':
     main()
     

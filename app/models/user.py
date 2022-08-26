@@ -4,7 +4,4 @@ class User(object):
         self.password = password
         
     def pd(self):
-        return self.id
-
-    def sl(self):
-        return self.password
+        return self.id, self.password
