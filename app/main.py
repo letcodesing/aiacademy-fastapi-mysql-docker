@@ -7,11 +7,13 @@ basedir = os.path.dirname(os.path.abspath(__file__))
 from app.services.calculator import CalculatorService
 from app.services.user import UserService
 from app.services.classlistservice import ClasslistService
+from app.services.grade import GradeService
 def print_menu():
     print('0. 전체프로그램 종료')
     print('1. 계산기')
     print('2. 로그인')
     print('3. 점수')
+    print('4. 학점')
 
     menu = input('메뉴')
     return menu
@@ -46,6 +48,18 @@ def main():
             print(f'{z}의 등급은')
             list.listService(x,c,v)
 
+
+        elif menu == '4':
+            puncher = GradeService()
+            name = str(input('이름'))
+            math = int(input('math'))
+            eng = int(input('eng'))
+            kor = int(input('kor'))
+
+            print(f'{name}의 학점은 {puncher.get_grade(math,eng,kor)}')
+            
+            
+            
 if __name__ =='__main__':
     main()
     
