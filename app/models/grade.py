@@ -1,13 +1,7 @@
-class Grade():
-    def __init__(self,math,kor,eng):
-        self.math = math
+class Grade(object):
+    def __init__(self,name,kor,eng,math):
+        self.name = name
         self.kor = kor
-        self.eng = eng
-        self.mean = 0
-
-    
-    def set_score(self):
-        self.mean = (self.math + self.kor + self.eng) / 3
-
-    def get_score(self):
-        return self.mean
+        self.eng = eng 
+        self.math = math
+        

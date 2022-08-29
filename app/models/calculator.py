@@ -1,17 +1,13 @@
 class Calculator(object):
-    def __init__(self,firt,sec):
-        self.firt = firt
-        self.sec = sec
-
-    def sum(self):
-        return self.firt + self.sec
-
-    def sub(self):
-        return self.firt - self.sec
-
-    def multiple(self):
-        return self.firt * self.sec
+    def __init__(self, first, second):
+        self.first = first
+        self.second = second
     
-    def devide(self):
-        return self.firt / self.sec
-        
+    def sum(self):
+        return self.first + self.second
+    def subtract(self):
+        return self.first - self.second    
+    def multi(self):
+        return self.first * self.second
+    def divide(self):
+        return self.first / self.second        

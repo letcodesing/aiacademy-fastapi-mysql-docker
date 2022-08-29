@@ -2,6 +2,8 @@ import random
 from icecream import ic
 import pandas as pd
 from app.models.quiz4 import Quiz4
+import string
+import numpy as np
 class PandasQuiz():
     def __init__(self) -> None:
         pass
@@ -23,16 +25,19 @@ class PandasQuiz():
         )
         ic(df)
 
+    def get_id(self):
+        return [''.join(random.choice(string.ascii_letters)) for i in range(5)]
+
+    def get_score(self):
+        return np.random.randint(0,100,(10,4))
+
+
     def quiz4(self):
-        get = Quiz4()
-        stay = pd.DataFrame(orient=f'{get.get_starlist()}',columns=['국어','영어','수학','사회'])
-        df =pd.DataFrame.from_dict(
-            {f'{get.get_starlist()}':[i for i in random.sample(range(random.randint(10,100)),4)]},orient='index',columns=['국어','영어','수학','사회']
-        )
-        d = {f'{get.get_starlist()}':[c for c in random.sample(range(random.randint(10,100)),4)]}
-        for i in range(10):
-            stay.loc[i] = d
-            
+        name = self.get_id()
+        df = pd.DataFrame(self.get_score(),
+                         index = self.get_id(),
+                         columns = ['국','수','영','사'])
+
          
    
         
