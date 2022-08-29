@@ -1,19 +1,27 @@
+from email import iterators
 import os
 import sys
+from more_itertools import iterate
+from numpy import iterable
+
+from tqdm import tqdm
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 basedir = os.path.dirname(os.path.abspath(__file__))
-
+from app.services.grade2 import Grade2Service
 from app.services.calculator import CalculatorService
 from app.services.user import UserService
 from app.services.classlistservice import ClasslistService
 from app.services.grade import GradeService
+from app.services.pandas_quiz1 import PandasQuiz
 def print_menu():
     print('0. 전체프로그램 종료')
     print('1. 계산기')
     print('2. 로그인')
     print('3. 점수')
     print('4. 학점')
+    print('5. 판다스퀴즈')
+    print('6. 학점2')
 
     menu = input('메뉴')
     return menu
@@ -58,8 +66,36 @@ def main():
 
             print(f'{name}의 학점은 {puncher.get_grade(math,eng,kor)}')
             
-            
-            
+        elif menu == '5':
+            quiz = PandasQuiz()
+            while 1:
+                quiz_num = input('퀴즈번호1~4, 종료는 9')
+                if quiz_num == '0':
+                    break
+                elif quiz_num == '1':
+                    quiz.quiz1()
+                elif quiz_num == '2':
+                    quiz.quiz2()
+                elif quiz_num == '3':
+                    quiz.quiz3()
+                elif quiz_num == '4':
+                    quiz.quiz4()
+                
+
+
+        elif menu == '6':
+            name = str(input('name'))        
+            math = int(input('math'))
+            kor = int(input('kor'))
+            eng = int(input('eng'))
+            grader = Grade2Service()
+            print(f'name:{grader.get_name(name)}의 학점은 {grader.get_grade(math,kor,eng)}입니다')                
+
 if __name__ =='__main__':
     main()
+
+    enumerate
+    tqdm
+    iterable
+    iterators
     
