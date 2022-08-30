@@ -2,8 +2,9 @@ from app.services.calculator import CalculatorService
 from app.services.user import UserService
 from app.services.grade import GradeService
 from app.services.quiz import Quiz
+from app.services.m01_01_iris import Iris
 from app.constants.menus import LOGIN, LOGOUT, CALCULATOR, GRADE, \
-    QUIZ_1, QUIZ_2, QUIZ_3, QUIZ_4
+    QUIZ_1, QUIZ_2, QUIZ_3, QUIZ_4, IRIS
 class Url:
     
     def router(self, menu):
@@ -26,4 +27,5 @@ class Url:
         elif menu == QUIZ_2: Quiz().quiz_2()
         elif menu == QUIZ_3: Quiz().quiz_3()
         elif menu == QUIZ_4: Quiz().quiz_4()
+        elif menu == IRIS: Iris().exec()
             
