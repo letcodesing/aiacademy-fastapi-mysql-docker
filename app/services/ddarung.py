@@ -1,5 +1,4 @@
 from app.models.ddarung import DDarung
-from app.utils.context import Context
 import pandas as pd
 
 class DDarungService:
@@ -12,23 +11,19 @@ class DDarungService:
         this.train = model.from_csv(path, train)
         this.test = model.from_csv(path, test)
         this.id = this.test['id']
-        
-        this1 = model.fillna_median(this)
-        this2 = model.fillna_interpolate(this) # 가장 우수함
-        this3 = model.fillna_mean(this)
-        this4 = model.drop_na(this)
-        this = model.make_stereotype(this2)
-        this = model.extract_label_in_train(this)
-        this = model.learning(this)
+        model.missing_value_process_median(this)
+        model.missing_value_process_interpolate(this)
+        model.missing_value_process_mean(this)
+        model.missing_value_process_drop(this)
         return this
         
     
     def submit(self, path, train, test):
-        self.preprocess(path, train, test)
-        
+        this = self.preprocess(path, train, test)
+        print(' ### DF ### 구조보기')
+        print(this.train.head())
         '''
         count  = 0
         pd.Dataframe({'id': this.id, 'count':count})
         '''
-        
         
